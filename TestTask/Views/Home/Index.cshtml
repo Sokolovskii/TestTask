@@ -1,0 +1,26 @@
+﻿<div class="container" style="padding-top:2%; padding-bottom:2%">
+    <div class="row" style="background-color:dimgray">
+        <div class="col-md-3" style="padding-left:0px">
+            <button style="width:100%" id="CreateTable" class="btn btn-secondary">Показать таблицу</button>
+            <button id="HideTable" style="display:none; width:100%" class="btn btn-secondary">Скрыть таблицу</button>
+        </div>
+        <div class="col-md-3">
+            <button style="width:100%; display:none" id="CreateExcelTable" class="btn btn-secondary">Сгенерировать excel</button>
+        </div>
+        <div class="col-md-3">
+            <button style="width:100%; display:none" id="Add" class="btn btn-secondary">Добавить запись</button>
+        </div>
+    </div>
+</div>
+<div>
+    <table id="Table" class="table" width="1200px"></table>
+</div>
+
+
+@{await Html.RenderPartialAsync("Add"); }
+
+@{await Html.RenderPartialAsync("Update"); }
+
+@{await Html.RenderPartialAsync("Subordination"); }
+
+
