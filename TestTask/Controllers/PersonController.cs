@@ -116,26 +116,25 @@ namespace TestTask.Controllers
 		[HttpGet("excel")]
 		public IActionResult CreateExcelFile()
 		{
-			byte[] byteTable;
 			logger.Info("Начало создания Excel файла");
 			try
 			{
 				var persons = Repository.GetAllPersons();
-				byteTable = ExcelRender.GetByteTable(persons);
-
+				var byteTable = ExcelRender.GetByteTable(persons);
 				logger.Info("Файл Excel успешно создан");
 
 				return File(
 				fileContents: byteTable,
 				contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 				fileDownloadName: "Persons.xlsx");
+				
 			}
 			catch(Exception ex)
 			{
-				byteTable = null;
 				logger.Info($"Файл excel не создан, произошла ошибка: {ex}");
-				return null;
+				return View("Error");
 			}
 		}
+
 	}
 }
